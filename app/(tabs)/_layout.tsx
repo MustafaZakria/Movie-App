@@ -40,7 +40,7 @@ const _layout = () => {
           position: "absolute",
           overflow: "hidden",
           // borderWidth: 1,
-          // borderColor: "#0f0D23",
+          borderColor: "transparent",
         },
         tabBarItemStyle: {
           width: "100%",
@@ -61,16 +61,6 @@ const _layout = () => {
         }}
       />
       <Tabs.Screen
-        name="saved"
-        options={{
-          title: "Saved",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.save} title="Saved" />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="search"
         options={{
           title: "Search",
@@ -81,9 +71,19 @@ const _layout = () => {
         }}
       />
       <Tabs.Screen
+        name="saved"
+        options={{
+          title: "Saved",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={icons.save} title="Saved" />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
-          title: "Profile",
+          title: "Pfrofile",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.person} title="Profile" />
