@@ -4,12 +4,12 @@ import { Tabs } from "expo-router";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
 
-const TabIcon = ({ focused, icon, title }: any) => {
+function TabIcon({ focused, icon, title }: any) {
   if (focused) {
     return (
       <ImageBackground
         source={images.highlight}
-        className="flex flex-row w-full flex-1 min-w-[112px] min-h-16 mt-4 justify-center items-center rounded-full overflow-hidden"
+        className="flex flex-row w-full flex-1 min-w-[112px] min-h-[52px] mt-4  justify-center items-center rounded-full overflow-hidden"
       >
         <Image source={icon} tintColor="#151312" className="size-5" />
         <Text className="text-secondary text-base font-semibold ml-2">
@@ -17,49 +17,50 @@ const TabIcon = ({ focused, icon, title }: any) => {
         </Text>
       </ImageBackground>
     );
-  } else {
-    return (
-      <View className="size-full justify-center items-center mt-4 rounded-full">
-        <Image source={icon} tintColor="#A8B5DB" className="size-5" />
-      </View>
-    );
   }
-};
 
-const _layout = () => {
+  return (
+    <View className="size-full justify-center items-center mt-4 rounded-full">
+      <Image source={icon} tintColor="#A8B5DB" className="size-5" />
+    </View>
+  );
+}
+
+export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: "#0f0D23",
-          borderRadius: 50,
-          height: 52,
-          marginHorizontal: 20,
-          marginBottom: 36,
-          position: "absolute",
-          overflow: "hidden",
-          // borderWidth: 1,
-          borderColor: "transparent",
-        },
         tabBarItemStyle: {
           width: "100%",
           height: "100%",
           justifyContent: "center",
           alignItems: "center",
         },
+        tabBarStyle: {
+          backgroundColor: "#0F0D23",
+          borderRadius: 26,
+          marginHorizontal: 20,
+          marginBottom: 16,
+          height: 52,
+          position: "absolute",
+          overflow: "hidden",
+          // borderWidth: 1,
+          borderColor: "transparent",
+        },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
+          title: "index",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.home} title="Home" />
           ),
         }}
       />
+
       <Tabs.Screen
         name="search"
         options={{
@@ -70,20 +71,22 @@ const _layout = () => {
           ),
         }}
       />
+
       <Tabs.Screen
         name="saved"
         options={{
-          title: "Saved",
+          title: "Save",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={icons.save} title="Saved" />
+            <TabIcon focused={focused} icon={icons.save} title="Save" />
           ),
         }}
       />
+
       <Tabs.Screen
         name="profile"
         options={{
-          title: "Pfrofile",
+          title: "Profile",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <TabIcon focused={focused} icon={icons.person} title="Profile" />
@@ -92,8 +95,6 @@ const _layout = () => {
       />
     </Tabs>
   );
-};
-
-export default _layout;
+}
 
 const styles = StyleSheet.create({});
