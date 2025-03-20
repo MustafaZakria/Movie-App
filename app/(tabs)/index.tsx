@@ -26,7 +26,11 @@ export default function Index() {
 
   return (
     <View className="flex-1 bg-primary">
-      <Image source={images.bg} className="w-full absolute z-0" />
+      <Image
+        source={images.bg}
+        className="w-full absolute z-0"
+        resizeMode="cover"
+      />
       <ScrollView
         className="flex-1 px-5"
         showsVerticalScrollIndicator={false}
@@ -59,12 +63,10 @@ export default function Index() {
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={3}
                 columnWrapperStyle={{
-                  justifyContent: "flex-start",
-                  gap: 20,
-                  paddingRight: 5,
+                  justifyContent: "space-between",
                   marginBottom: 10,
                 }}
-                className="mt-2 pd-32"
+                className="mt-2"
                 scrollEnabled={false}
               />
             </>
