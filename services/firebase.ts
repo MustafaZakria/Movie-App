@@ -8,6 +8,8 @@ import {
   updateDoc,
   where,
   initializeFirestore,
+  orderBy,
+  limit,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -58,9 +60,20 @@ export const updateSearchCount = async (searchQuery: string, movie: Movie) => {
   }
 };
 
-const fetchTrendingMovies = async () => {
-  const trendingRef = collection(firestore, TRENDING_COLLECTION_NAME);
-  const trendingSnapshot = await getDocs(trendingRef);
-  const trendingMovies = trendingSnapshot.docs.map((doc) => doc.data());
-  return trendingMovies;
+export const fetchTrendingMovies = async (): Promise<
+  TrendingMovie[] | undefined
+> => {
+  try {
+    const trendingRef = collection(firestore, TRENDING_COLLECTION_NAME);
+    //get data sorted by count in descending order
+    const trendingSnapshot = await getDocs(
+      query(trendingRef, orderBy("count", "desc"), limit(5))
+    );
+    const trendingMovies = trendingSnapshot.docs.map((doc) => doc.data());
+
+    return trendingMovies as TrendingMovie[];
+  } catch (error) {
+    console.log("Error fetching trending movies: ", error);
+    throw error;
+  }
 };
