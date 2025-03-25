@@ -2,6 +2,14 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## App Screens
+
+<p float="left">
+  <img src="screens/screen_1.jpeg" width="100" />
+  <img src="screens/screen_2.jpeg" width="100" />
+  <img src="screens/screen_3.jpeg" width="100" />
+</p>
+
 ## Get started
 
 1. Install dependencies
